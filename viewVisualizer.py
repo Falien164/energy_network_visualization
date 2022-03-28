@@ -1,4 +1,6 @@
 import numpy as np
+import plotly.graph_objects as go
+
 from sklearn.cluster import KMeans
 
 from dataLoader import DataLoader
@@ -83,7 +85,7 @@ class ViewVisualizer():
                             }
                             },
                         )
-                        
+
         return stylesheet
 
     def draw_arrows_on_edges(self, hour, stylesheet):
@@ -136,3 +138,26 @@ class ViewVisualizer():
             res = res[:-2]
             res += '\n\n'
         return res
+
+    def highlight_histogram(self, hour, node):
+        nodes = self.dataLoader.get_data(hour, 'nodes')
+        demand = np.array([n[2] for n in nodes])
+
+        bins = np.histogram_bin_edges(demand)
+        counts, bins = np.histogram(demand, bins=bins)
+        colors = ['blue',] * len(bins)
+
+        if node:
+            clicked_node = int(node['id'])-1
+            for idx, value in enumerate(bins):
+                if nodes[clicked_node][2] <= value:
+                    if  idx == 0:
+                        colors[idx] = 'yellow'
+                    else:
+                        colors[idx-1] = 'yellow'
+                    break
+        
+        fig = go.Figure(data=[go.Bar(
+            x=bins, y=counts,
+            marker_color=colors)])
+        return fig

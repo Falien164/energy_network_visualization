@@ -17,6 +17,10 @@ class Gui:
         self.app.callback(dash.dependencies.Output('text-cluster-output', 'value'),
         dash.dependencies.Input('hour-dropdown', 'value'),
         dash.dependencies.Input('cluster-input', 'value'))(self.changed_num_of_groups)
+
+        self.app.callback(dash.dependencies.Output('histogram', 'figure'),
+        dash.dependencies.Input('hour-dropdown', 'value'),
+        dash.dependencies.Input('cytoscape', 'tapNodeData'))(self.clicked_cytoscape)
     
     def build_layout(self):
         hours = self.viewVisualizer.dataLoader.load_hours_from_h5()
@@ -52,6 +56,10 @@ class Gui:
                     readOnly=True,
                     style={'width': '100%', 'height': 300},
                 ),
+
+                dash.dcc.Graph(
+                    id='histogram',
+                ),
             ]
         )
         return layout
@@ -63,6 +71,9 @@ class Gui:
         
     def changed_num_of_groups(self,hour, num_of_groups):
         return self.viewVisualizer.group_edges(hour, num_of_groups)
+
+    def clicked_cytoscape(self,hour, node):
+       return self.viewVisualizer.highlight_histogram(hour, node)
 
 if __name__ == '__main__':
     gui = Gui()
