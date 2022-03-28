@@ -57,10 +57,10 @@ class Gui:
         return layout
 
     def changed_hour(self,hour):
-        self.viewVisualizer.group_edges(hour, 2)
         return (self.viewVisualizer.load_nodes(hour),
                 self.viewVisualizer.create_stylesheet(hour)
         )
+        
     def changed_num_of_groups(self,hour, num_of_groups):
         return self.viewVisualizer.group_edges(hour, num_of_groups)
 
