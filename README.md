@@ -1,4 +1,7 @@
 # energy_network_visualization
-(29.03.2022 - work in progress)
-run:
+
+### how to run:
 python server.py
+
+### GUI
+<img src="https://github.com/Falien164/object_tracking/blob/main/images/graph.png" width="400" height="400">
