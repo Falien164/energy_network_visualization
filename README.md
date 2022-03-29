@@ -16,13 +16,21 @@ Each class contains:
      - gens         -> node_id, generation [MW], cost [zł]
      - branches  -> node_from, node_to, flow [MW]
 - results/hour_2/
-- 
 - ...
-- 
 - results/hour_24/
+
+### Implemented functionality
+- differences in the flows on the edges (arrows on edges)
+- differences in the operation of nodes (the node gets power from others, the node generates power for others) 
+     - Black node (gets power from others
+     - Green node (generates power)
+     - Orange node (consume more power than is generating)
+- 
+
+### Graph
+Example of a graph
+<img src="https://github.com/Falien164/energy_network_visualization/blob/main/images/graph.png" width="400" height="400">
+
 
 ### how to run:
 > python server.py
-
-### GUI
-<img src="https://github.com/Falien164/energy_network_visualization/blob/main/images/graph.png" width="400" height="400">
