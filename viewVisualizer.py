@@ -8,8 +8,8 @@ from dataLoader import DataLoader
 
 class ViewVisualizer():
 
-    def __init__(self):
-        self.dataLoader = DataLoader("task_data.hdf5")
+    def __init__(self, filename):
+        self.dataLoader = DataLoader(filename)
         self.clusteredLabels = []
 
     def create_stylesheet(self, hour, num_of_groups):

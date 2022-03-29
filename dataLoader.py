@@ -4,7 +4,7 @@ import re
 
 class DataLoader:
 
-    def __init__(self, filename="task_data.hdf5"):
+    def __init__(self, filename="energyNetwork_24h.hdf5"):
         self.filename = filename 
 
     def get_data(self,hour, dataset):

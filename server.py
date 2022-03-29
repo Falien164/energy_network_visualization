@@ -4,9 +4,9 @@ import dash_cytoscape as cyto
 from viewVisualizer import ViewVisualizer
 
 class Gui:
-    def __init__(self):
+    def __init__(self, filename):
         self.app = dash.Dash(__name__)
-        self.viewVisualizer = ViewVisualizer()
+        self.viewVisualizer = ViewVisualizer(filename)
 
         self.app.layout = self.build_layout()
 
@@ -70,7 +70,3 @@ class Gui:
 
     def clicked_cytoscape(self,hour, node):
        return self.viewVisualizer.highlight_histogram(hour, node)
-
-if __name__ == '__main__':
-    gui = Gui()
-    gui.app.run_server(debug=True)
