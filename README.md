@@ -39,7 +39,7 @@ Each class contains:
 
 
 <img src="https://github.com/Falien164/energy_network_visualization/blob/main/images/graph.png" width="400" height="400">
-
+ 
 
 ### how to run:
 > python run_server.py --filename
