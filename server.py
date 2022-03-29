@@ -70,3 +70,4 @@ class Gui:
 
     def clicked_cytoscape(self,hour, node):
        return self.viewVisualizer.highlight_histogram(hour, node)
+       
