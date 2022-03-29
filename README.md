@@ -20,12 +20,20 @@ Each class contains:
 - results/hour_24/
 
 ### Implemented functionality
-- differences in the flows on the edges (arrows on edges)
-- differences in the operation of nodes (the node gets power from others, the node generates power for others) 
+- Differences in the flows on the edges 
+     - draw arrows on edges which show direction of flow
+- Differences in the operation of nodes (the node gets power from others, the node generates power for others) 
      - Black node (gets power from others
      - Green node (generates power)
      - Orange node (consume more power than is generating)
-- 
+- Clustering edges by value of flow
+     - Edges are colored with the same color if are in the same group
+     - TextArea displays created groups
+- distinguishing the amount of generated power 
+     - Size of the node show how much power it generates. The bigger the more 
+- Histogram of consumed power
+     - Display histogram with consumed power of each node
+     - Clicking a node will change a color of column on a histogram showing where the node is 
 
 ### Graph
 Example of a graph
