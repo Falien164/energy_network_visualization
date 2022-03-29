@@ -4,4 +4,4 @@
 python server.py
 
 ### GUI
-<img src="https://github.com/Falien164/object_tracking/blob/main/images/graph.png" width="400" height="400">
+<img src="https://github.com/Falien164/object_tracking/blob/master/images/graph.png" width="400" height="400">
