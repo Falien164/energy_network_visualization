@@ -35,7 +35,7 @@ Each class contains:
      - Display histogram with consumed power of each node
      - Clicking a node will change a color of column on a histogram showing where the node is 
 
-### Example of a graph
+### Example of a graph with 3 groups
 
 
 <img src="https://github.com/Falien164/energy_network_visualization/blob/main/images/graph.png" width="400" height="400">
