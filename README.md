@@ -10,7 +10,7 @@ Each class contains:
 - ViewVisualization - functions to wrap data for GUI
 
 
-### Data structure:
+[^1]:  Data structure:
 > results/hour_1/
 > 
 > results/hour_2/
@@ -19,8 +19,8 @@ Each class contains:
 > 
 > results/hour_24/
 
-dataset   ->  columns[unit]
 
+[^2]: test 
 results/hour_1/nodes       -> node_id, node_type, demand [MW]
 
 results/hour_1/gens         -> node_id, generation [MW], cost [zł]
