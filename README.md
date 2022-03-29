@@ -1,6 +1,6 @@
 # energy_network_visualization
 
-It's visualization task of energy network flow. Data are stored in task_data.hdf5 file. There are 24 folders for each hour in day.
+Visualization task of energy network flow. Data are stored in energyNetwork_24h.hdf5 file. There are 24 folders for each hour in day.
 
 Solution was based on MVC design pattern. 
 
