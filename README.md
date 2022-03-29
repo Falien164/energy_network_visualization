@@ -25,7 +25,7 @@ Each class contains:
 - Differences in the operation of nodes (the node gets power from others, the node generates power for others) 
      - Black node (gets power from others
      - Green node (generates power)
-     - Orange node (consume more power than is generating)
+     - Yellow node (consume more power than is generating)
 - Clustering edges by value of flow
      - Edges are colored with the same color if are in the same group
      - TextArea displays created groups
