@@ -21,7 +21,7 @@ Each class contains:
 
 ### Implemented functionality
 - Differences in the flows on the edges 
-     - draw arrows on edges which show direction of flow
+     - Draw arrows on edges which show direction of flow
 - Differences in the operation of nodes (the node gets power from others, the node generates power for others) 
      - Black node (gets power from others
      - Green node (generates power)
@@ -41,4 +41,4 @@ Example of a graph
 
 
 ### how to run:
-> python server.py
+> python run_server.py --filename
