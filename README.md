@@ -7,7 +7,7 @@ Solution was based on MVC design pattern.
 Each class contains:
 - DataLoader - functions to load data
 - Server is a GUI - functions to control visualization
-- ViewVisualization - functions to wrap data for GUI
+- ViewVisualization - functions to wrap data for visualization in GUI
 
 
 ###  Data structure:
