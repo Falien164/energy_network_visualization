@@ -4,4 +4,4 @@
 python server.py
 
 ### GUI
-<img src="https://github.com/Falien164/energy_network_visualization/blob/master/images/graph.png" width="400" height="400">
+<img src="https://github.com/Falien164/energy_network_visualization/blob/main/images/graph.png" width="400" height="400">
