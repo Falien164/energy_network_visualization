@@ -14,7 +14,6 @@ class DataLoader:
                 data_h5 = h5.get(f'results/{hour}/{dataset}')
                 data = np.zeros(data_h5.shape, dtype=data_h5.dtype)
                 data_h5.read_direct(data)
-
                 return data
             raise "Wrong value of dataset or folder, not exist in h5 file"
             

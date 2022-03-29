@@ -89,12 +89,12 @@ class ViewVisualizer():
 
     def direct_edges(self, stylesheet, num_of_groups):
         colors = self.get_random_set_of_colors(num_of_groups)
-        for branch in self.clusteredLabels:
-            color = self.rgb_to_hex(colors[branch[3]][0],colors[branch[3]][1],colors[branch[3]][2])
-            if branch[2] > 0:
+        for id1,id2,flow,label in self.clusteredLabels:
+            color = self.rgb_to_hex(colors[label][0],colors[label][1],colors[label][2])
+            if flow > 0:
                 stylesheet.append(                       
                     {
-                        'selector': f'#{int(branch[0])}_{int(branch[1])}',
+                        'selector': f'#{int(id1)}_{int(id2)}',
                         'style': {
                             'mid-target-arrow-shape': 'vee',
                             'mid-target-arrow-color': f'#{color}',
@@ -103,10 +103,10 @@ class ViewVisualizer():
                         }
                     }
                 )
-            elif branch[2] < 0:   
+            elif flow < 0:   
                 stylesheet.append(                     
                     {
-                        'selector': f'#{int(branch[0])}_{int(branch[1])}',
+                        'selector': f'#{int(id1)}_{int(id2)}',
                         'style': {
                             'mid-source-arrow-shape': 'vee',
                             'mid-source-arrow-color': f'#{color}',
@@ -124,7 +124,7 @@ class ViewVisualizer():
         num_groups = int(num_groups)
 
         branches = self.dataLoader.get_data(hour, "branches")
-        flow = np.array([branch[2] for branch in branches]).reshape(-1,1)
+        flow = branches[:,2].reshape(-1,1)
         clustering = KMeans(n_clusters=num_groups).fit(flow)
 
         self.clusteredLabels = []       # save clustered edges to color them later
@@ -132,7 +132,7 @@ class ViewVisualizer():
             self.clusteredLabels.append([int(branch[0]), int(branch[1]), branch[2], clustering.labels_[idx]])
 
         res = ''
-        for group in range(0,num_groups):
+        for group in range(num_groups):
             res += f'Grupa: {group} o punkcie centralnym: {np.round(clustering.cluster_centers_[group][0],2)} \n'
             for idx, label in enumerate(clustering.labels_):
                 if label == group:
@@ -147,9 +147,9 @@ class ViewVisualizer():
 
     def get_random_set_of_colors(self, n):
         '''Returns a list of distinct RGB color'''
-        h = np.array([1*i/(n+1) for i in range(n)]).reshape(-1,1)
-        s = np.random.uniform(low=0.5, high=1, size=(n, 1))
-        v = np.random.uniform(low=0.8, high=1, size=(n, 1))
+        h = np.arange(1,n+1).reshape(n,1)/(n+1) # 1,2,...,n
+        s = np.random.uniform(low=0.5, high=1, size=(n,1))
+        v = np.random.uniform(low=0.8, high=1, size=(n,1))
         hsv_colors = np.transpose([h, s, v], (1, 2, 0))
         rgb_colors = hsv2rgb(hsv_colors)
         rgb_colors = (255*(rgb_colors - np.min(rgb_colors))/np.ptp(rgb_colors)).astype(int)  
@@ -157,7 +157,7 @@ class ViewVisualizer():
     
     def highlight_histogram(self, hour, node):
         nodes = self.dataLoader.get_data(hour, 'nodes')
-        demand = np.array([n[2] for n in nodes])
+        demand = nodes[:,2]
 
         bins = np.histogram_bin_edges(demand)
         counts, bins = np.histogram(demand, bins=bins)
