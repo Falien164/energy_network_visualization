@@ -10,24 +10,16 @@ Each class contains:
 - ViewVisualization - functions to wrap data for GUI
 
 
-[^1]:  Data structure:
-> results/hour_1/
-> 
-> results/hour_2/
-> 
-> ...
-> 
-> results/hour_24/
-
-
-[^2]: test 
-results/hour_1/nodes       -> node_id, node_type, demand [MW]
-
-results/hour_1/gens         -> node_id, generation [MW], cost [zł]
-
-results/hour_1/branches  -> node_from, node_to, flow [MW]
-
-
+###  Data structure:
+- results/hour_1/
+      - nodes       -> node_id, node_type, demand [MW]
+      - gens         -> node_id, generation [MW], cost [zł]
+      - branches  -> node_from, node_to, flow [MW]
+- results/hour_2/
+- 
+- ...
+- 
+- results/hour_24/
 
 ### how to run:
 > python server.py
