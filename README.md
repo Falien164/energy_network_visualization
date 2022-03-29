@@ -4,8 +4,11 @@ It's visualization task of energy network flow. Data are stored in task_data.hdf
 
 ### Data structure:
 > results/hour_1/
+> 
 > results/hour_2/
+> 
 > ...
+> 
 > results/hour_24/
 
 
