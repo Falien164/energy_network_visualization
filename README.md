@@ -43,3 +43,5 @@ Each class contains:
 
 ### how to run:
 > python run_server.py --filename
+for instance:
+> python .\run_server.py --filename=energyNetwork_24h.hdf5
