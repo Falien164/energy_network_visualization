@@ -147,7 +147,7 @@ class ViewVisualizer():
 
     def get_random_set_of_colors(self, n):
         '''Returns a list of distinct RGB color'''
-        h = np.arange(1,n+1).reshape(n,1)/(n+1) # 1,2,...,n
+        h = np.arange(1,n+1).reshape(n,1)/(n+1) # [1,2,...,n]/(n+1)
         s = np.random.uniform(low=0.5, high=1, size=(n,1))
         v = np.random.uniform(low=0.8, high=1, size=(n,1))
         hsv_colors = np.transpose([h, s, v], (1, 2, 0))

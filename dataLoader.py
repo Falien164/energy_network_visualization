@@ -25,6 +25,6 @@ class DataLoader:
             return [ atoi(c) for c in re.split(r'(\d+)', text) ]
 
         with h5py.File(self.filename, "r") as h5:
-            hours = [key for key in h5.get('results').keys()]
+            hours = list(h5.get('results').keys())
             hours.sort(key=natural_sorting)
             return hours
