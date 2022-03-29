@@ -37,6 +37,7 @@ Each class contains:
 
 ### Graph
 Example of a graph
+
 <img src="https://github.com/Falien164/energy_network_visualization/blob/main/images/graph.png" width="400" height="400">
 
 
