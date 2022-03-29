@@ -38,7 +38,7 @@ Each class contains:
 ### Example of a graph with 3 groups
 
 
-<img src="https://github.com/Falien164/energy_network_visualization/blob/main/images/graph_3groups.png" width="400" height="400">
+<img src="https://github.com/Falien164/energy_network_visualization/blob/main/images/graph.png" width="400" height="400">
  
 
 ### how to run:
