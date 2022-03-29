@@ -1,4 +1,3 @@
-import enum
 import numpy as np
 import plotly.graph_objects as go
 from skimage.color import hsv2rgb
@@ -24,7 +23,7 @@ class ViewVisualizer():
         ]
         
         stylesheet += self.color_nodes(hour, stylesheet)
-        stylesheet += self.draw_arrows_on_edges(stylesheet, num_of_groups)
+        stylesheet += self.direct_edges(stylesheet, num_of_groups)
 
         return stylesheet
 
@@ -46,7 +45,6 @@ class ViewVisualizer():
             
             Not every node generate power. Only those which node_type are greater than 1 do it. Size of nodes which can
             generate is modified by a generated power factor  
-
         """
         nodes = self.dataLoader.get_data(hour, "nodes")
         gens = self.dataLoader.get_data(hour, "gens")
@@ -57,7 +55,7 @@ class ViewVisualizer():
                     {
                         'selector': f'#{int(node[0])}',
                         'style': {
-                            'background-color': 'red',
+                            'background-color': 'black',
                             
                         }
                     },
@@ -73,23 +71,23 @@ class ViewVisualizer():
                                 'width': f"{5*gen[1]}%",
                                 'height': f"{5*gen[1]}%"
                             }
-                            },
-                        )
+                        },
+                    )
                     elif node[0] == gen[0]:                       
                         stylesheet.append(
                             {
                             'selector': f'#{int(node[0])}',
                             'style': {
-                                'background-color': 'yellow',
+                                'background-color': '#ecb500',
                                 'width': f"{5*gen[1]}%",
                                 'height': f"{5*gen[1]}%"
                             }
-                            },
-                        )
+                        },
+                    )
 
         return stylesheet
 
-    def draw_arrows_on_edges(self, stylesheet, num_of_groups):
+    def direct_edges(self, stylesheet, num_of_groups):
         colors = self.get_random_set_of_colors(num_of_groups)
         for branch in self.clusteredLabels:
             color = self.rgb_to_hex(colors[branch[3]][0],colors[branch[3]][1],colors[branch[3]][2])

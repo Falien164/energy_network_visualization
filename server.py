@@ -14,11 +14,7 @@ class Gui:
             dash.dependencies.Output('text-cluster-output', 'value'),
             dash.dependencies.Output('cytoscape', 'stylesheet'),
             dash.dependencies.Input('hour-dropdown', 'value'),
-            dash.dependencies.Input('cluster-input', 'value'))(self.changed_hour)
-
-        # self.app.callback(dash.dependencies.Output('text-cluster-output', 'value'),
-            # dash.dependencies.Input('hour-dropdown', 'value'),
-            # dash.dependencies.Input('cluster-input', 'value'))(self.changed_num_of_groups)
+            dash.dependencies.Input('cluster-input', 'value'))(self.changed_visualization)
 
         self.app.callback(dash.dependencies.Output('histogram', 'figure'),
             dash.dependencies.Input('hour-dropdown', 'value'),
@@ -66,14 +62,11 @@ class Gui:
         )
         return layout
 
-    def changed_hour(self,hour,num_of_groups):
+    def changed_visualization(self,hour,num_of_groups):
         return (self.viewVisualizer.load_nodes(hour),
                 self.viewVisualizer.group_edges(hour, num_of_groups),
                 self.viewVisualizer.create_stylesheet(hour, num_of_groups),
         )
-        
-    # def changed_num_of_groups(self,hour, num_of_groups):
-        # return self.viewVisualizer.group_edges(hour, num_of_groups)
 
     def clicked_cytoscape(self,hour, node):
        return self.viewVisualizer.highlight_histogram(hour, node)
