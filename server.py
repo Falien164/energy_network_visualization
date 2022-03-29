@@ -29,6 +29,7 @@ class Gui:
                     dash.dcc.Dropdown( id='hour-dropdown', 
                         options= hours,
                         value = hours[0],
+                        clearable = False
                     )],
                 style={'width': '50%'}
                 ),
