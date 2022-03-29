@@ -12,9 +12,9 @@ Each class contains:
 
 ###  Data structure:
 - results/hour_1/
-      - nodes       -> node_id, node_type, demand [MW]
-      - gens         -> node_id, generation [MW], cost [zł]
-      - branches  -> node_from, node_to, flow [MW]
+     - nodes       -> node_id, node_type, demand [MW]
+     - gens         -> node_id, generation [MW], cost [zł]
+     - branches  -> node_from, node_to, flow [MW]
 - results/hour_2/
 - 
 - ...
