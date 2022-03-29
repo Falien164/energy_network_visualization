@@ -11,16 +11,18 @@ class Gui:
         self.app.layout = self.build_layout()
 
         self.app.callback(dash.dependencies.Output('cytoscape', 'elements'),
+            dash.dependencies.Output('text-cluster-output', 'value'),
             dash.dependencies.Output('cytoscape', 'stylesheet'),
-            dash.dependencies.Input('hour-dropdown', 'value'))(self.changed_hour)
+            dash.dependencies.Input('hour-dropdown', 'value'),
+            dash.dependencies.Input('cluster-input', 'value'))(self.changed_hour)
 
-        self.app.callback(dash.dependencies.Output('text-cluster-output', 'value'),
-        dash.dependencies.Input('hour-dropdown', 'value'),
-        dash.dependencies.Input('cluster-input', 'value'))(self.changed_num_of_groups)
+        # self.app.callback(dash.dependencies.Output('text-cluster-output', 'value'),
+            # dash.dependencies.Input('hour-dropdown', 'value'),
+            # dash.dependencies.Input('cluster-input', 'value'))(self.changed_num_of_groups)
 
         self.app.callback(dash.dependencies.Output('histogram', 'figure'),
-        dash.dependencies.Input('hour-dropdown', 'value'),
-        dash.dependencies.Input('cytoscape', 'tapNodeData'))(self.clicked_cytoscape)
+            dash.dependencies.Input('hour-dropdown', 'value'),
+            dash.dependencies.Input('cytoscape', 'tapNodeData'))(self.clicked_cytoscape)
     
     def build_layout(self):
         hours = self.viewVisualizer.dataLoader.load_hours_from_h5()
@@ -64,13 +66,14 @@ class Gui:
         )
         return layout
 
-    def changed_hour(self,hour):
+    def changed_hour(self,hour,num_of_groups):
         return (self.viewVisualizer.load_nodes(hour),
-                self.viewVisualizer.create_stylesheet(hour)
+                self.viewVisualizer.group_edges(hour, num_of_groups),
+                self.viewVisualizer.create_stylesheet(hour, num_of_groups),
         )
         
-    def changed_num_of_groups(self,hour, num_of_groups):
-        return self.viewVisualizer.group_edges(hour, num_of_groups)
+    # def changed_num_of_groups(self,hour, num_of_groups):
+        # return self.viewVisualizer.group_edges(hour, num_of_groups)
 
     def clicked_cytoscape(self,hour, node):
        return self.viewVisualizer.highlight_histogram(hour, node)
